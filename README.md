@@ -154,4 +154,114 @@ npm i --save-dev mini-css-extract-plugin style-loader css-loader
 npm i styled-jsx --save
 ```
 
-#### (3-2) Configure Webpack
+#### (3-2) Update webpack.config.js
+
+We need to add a new rule for css. 
+
+* Make sure to add style-loader first. Otherwise, you will get error!
+
+```javascript
+module: {
+      rules: [
+        { test: /\.tsx?$/, exclude: /node_modules/, loader: "ts-loader"},
+		{ test: /\.js$/, use: ["source-map-loader"], enforce: "pre" },
+		{ test: /\.css$/, use: ['style-loader', 'css-loader']}
+      ]
+    },
+```
+
+Optionally you can use min-css-extract plugin.
+
+```javascript
+// import first 
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+
+// add this in the plugins: 
+new MiniCssExtractPlugin({filename: "app.css"}),
+```
+#### (3-3) Adding bootstrap support
+
+For bootstrap, create css folder in the public folder and import with bootstrap.css file first, then import it in index.tsx file. In this way, bootstrap will get compiled into a bundle.
+
+bootstrap.css
+```
+@import "../../node_modules/bootstrap/dist/css/bootstrap.css";
+```
+
+index.tsx
+```javascript
+import '../public/css/bootstrap.css'
+```
+
+#### (3-4) Adding styled-jsx support
+
+In the ./components/Style.tsx, we are using styled-jsx with <Style jsx global>. TypeScript will complain about jsx and global as it doesn't understand the type. We need to add their definitions in custom.d.ts in the root folder.
+
+custom.d.ts
+```javascript
+import 'react';
+
+declare module 'react' {
+  interface StyleHTMLAttributes<T> extends React.HTMLAttributes<T> {
+    jsx?: boolean;
+    global?: boolean;
+  }
+}
+```
+
+### (4) Setting up Unit Test (Mocha, Sinon, Chai and Istanbul)
+
+#### (4-1) Installing dependencies
+
+All modules except Istanbul are required to install @type modules. Istanbul is written in TypeScript and doesn't require @type.
+
+ts-node is required to hook mocha with TypeScript.
+
+```bash
+npm i chai mocha mocha-typescript sinon ts-node --save-dev
+npm i @types/chai @types/mocha @types/sinon --save-dev
+npm i --save-dev nyc
+```
+
+### (4-2) Add script into package.json
+
+```
+"test": "mocha -r ts-node/register test/**/*.ts --recursive --timeout 5000",
+"integration": "mocha -r ts-node/register  --recursive --timeout 5000 integration/**/*.ts"
+```
+
+other examples (in progress)
+
+```
+"test": "nyc mocha --require test/setup.js --require @babel/register --recursive --timeout 5000 --require ignore-styles test/**/*.ts",
+"integration": "mocha --require test/setup.js --require @babel/register --recursive --timeout 5000 --require ignore-styles integration/**/*.js"
+```
+
+Optional nyc configuration example in package.json
+```
+ "nyc": {
+    "extension": [
+      ".ts",
+      ".tsx"
+    ],
+    "exclude": [
+      "**/*.d.ts"
+    ],
+    "reporter": [
+      "html",
+      "text"
+    ],
+    "all": true
+  },
+```
+
+### (5) Setting up Enzyme and JSDOM
+
+#### (5-1) Installing dependencies
+
+```bash
+npm i enzyme jsdom enzyme-adapter-react-16
+npm i @types/enzyme @types/jsdom @types/enzyme-adapter-react-16 --save-dev
+```
+
+

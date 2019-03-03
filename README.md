@@ -38,6 +38,9 @@ npm i --save react react-dom @types/react @types/react-dom
 npm i --save-dev ts-loader source-map-loader uglifyjs-webpack-plugin
 npm i --save-dev source-map-loader
 
+# install redux
+npm install -S redux react-redux @types/react-redux
+
 ```
 Note: using ts-loader. Can use awesome-typescript-loader instead.
 
@@ -123,20 +126,21 @@ npm build
 
 #### (2-1) Install dependencies
 
-We need two packages, eslint and eslint-plugin-react
 ```bash
-npm i --save-dev eslint
+npm i --save-dev eslint eslint-config-typescript @typescript-eslint/eslint-plugin
 npm i eslint-plugin-react@latest --save-dev
 ```
 
 ### (2-2) Configure eslint
 First add .eslintrc.json file to set up linting rules ([reference](https://www.mydatahack.com/using-editorconfig-and-eslint-in-node-js-project/))
 
-Then, add the script in package.json. Prebuild is for the deployment pipeline
+Then, add the script in package.json. Prebuild command makes sure to run eslint before build (optional).
 ```bash
 "eslint": "eslint src/*",
-"prebuild": "npm run lint",
+"prebuild": "npm run eslint",
 ```
+
+For Typescript eslint, 
 
 ### (2-3) Run eslint
 
@@ -254,6 +258,7 @@ Optional nyc configuration example in package.json
     "all": true
   },
 ```
+[reference](https://journal.artfuldev.com/write-tests-for-typescript-projects-with-mocha-and-chai-in-typescript-86e053bdb2b6)
 
 ### (5) Setting up Enzyme and JSDOM
 
@@ -265,3 +270,21 @@ npm i @types/enzyme @types/jsdom @types/enzyme-adapter-react-16 --save-dev
 ```
 
 
+### (6) Setting up Redux
+
+### (6-1) Installing dependencies
+
+```bash
+npm install -S redux react-redux @types/react-redux
+```
+
+### (6-2) Defining app's state
+
+Create state definition file in src/types/index.tsx
+
+```javascript
+export interface StoreState {
+    languageName: string;
+    enthusiasmLevel: number;
+}
+```

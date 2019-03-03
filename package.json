@@ -8,7 +8,7 @@
     "devbuild": "webpack --mode development",
     "build": "webpack --mode production",
     "eslint": "eslint src/*",
-    "prebuild": "npm run lint",
+    "fixlint": "eslint src/* --fix",
     "test": "mocha -r ts-node/register test/**/*.ts --recursive --timeout 5000",
     "integration": "mocha -r ts-node/register  --recursive --timeout 5000 integration/**/*.ts"
   },
@@ -23,6 +23,7 @@
     "@types/mocha": "^5.2.6",
     "@types/nock": "^9.3.1",
     "@types/sinon": "^7.0.8",
+    "@typescript-eslint/eslint-plugin": "^1.4.2",
     "chai": "^4.2.0",
     "css-loader": "^2.1.0",
     "eslint": "^5.15.0",
@@ -48,13 +49,18 @@
   "dependencies": {
     "@types/react": "^16.8.6",
     "@types/react-dom": "^16.8.2",
+    "@types/react-redux": "^7.0.1",
+    "@types/redux": "^3.6.0",
     "axios": "^0.18.0",
     "bootstrap": "^4.3.1",
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.10.0",
+    "eslint-config-typescript": "^2.0.0",
     "jsdom": "^13.2.0",
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
+    "react-redux": "^6.0.1",
+    "redux": "^4.0.1",
     "styled-jsx": "^3.2.1"
   }
 }

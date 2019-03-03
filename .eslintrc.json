@@ -17,44 +17,47 @@
       "react"
     ],
     "rules": {
-      "block-spacing": "error",
-      "no-class-assign": "error",
-      "space-infix-ops": "error",
+      "block-spacing": "warn",
+      "no-class-assign": "warn",
+      "space-infix-ops": "warn",
       "no-debugger": "off",
-      "no-undef": "error",
-      "no-extra-semi": "error",
-      "no-inner-declarations": "error",
-      "no-irregular-whitespace": "error",
-      "no-trailing-spaces": "error",
-      "no-multiple-empty-lines": "error",
-      "no-redeclare": "error",
-      "no-useless-escape": "error",
-      "no-unreachable": "error",
-      "no-unused-vars": "error",
-      "eol-last": "error",
+      "no-undef": "warn",
+      "no-extra-semi": "warn",
+      "no-inner-declarations": "warn",
+      "no-irregular-whitespace": "warn",
+      "no-trailing-spaces": "warn",
+      "no-multiple-empty-lines": "warn",
+      "no-redeclare": "warn",
+      "no-useless-escape": "warn",
+      "no-unreachable": "warn",
+      "no-unused-vars": "warn",
+      "eol-last": "warn",
       "indent": [
-        "error",
+        "warn",
         2,
         {
           "SwitchCase": 1
         }
       ],
       "linebreak-style": [
-        "error",
+        "warn",
         "windows"
       ],
       "quotes": [
-        "error",
+        "warn",
         "single"
       ],
-      "react/jsx-uses-react": "error",
-      "react/jsx-uses-vars": "error",
+      "react/jsx-uses-react": "warn",
+      "react/jsx-uses-vars": "warn",
       "semi": [
-        "error",
+        "warn",
         "never"
       ],
-      "space-before-blocks": "error",
-      "switch-colon-spacing": ["error", {"after": true, "before": false}]
-    }
+      "space-before-blocks": "warn",
+      "switch-colon-spacing": ["warn", {"after": true, "before": false}]
+    },
+      "extends": [
+        "typescript"
+      ]
   }
   

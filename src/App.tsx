@@ -1,15 +1,18 @@
-import * as React from "react";
+import * as React from 'react'
+import BodyContainer from './components/BodyContainer'
+import Style from './components/Style'
+import Form from './components/Form'
 
-import Style from "./components/Style";
-import Hello from "./components/Hello";
 
 const App = () => {
-    return (
-        <React.Fragment>
-            <Style />
-            <Hello compiler="TypeScript" framework="React" />
-        </React.Fragment>
-    )
+	return (
+		<React.Fragment>
+				<Style />
+				<BodyContainer>
+						<Form />
+				</BodyContainer>
+		</React.Fragment>
+	)
 }
 
-export default App;
+export default App

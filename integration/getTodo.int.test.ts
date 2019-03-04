@@ -7,6 +7,6 @@ describe('Integration test for getTodo()', () => {
 
     it('Should return the correct number of records', () => {
         getTodo(url);
-        // expect(getTo).to.be.equal(200);
+        // expect(getTodo(url)).to.be.equal(200);
     })
 })

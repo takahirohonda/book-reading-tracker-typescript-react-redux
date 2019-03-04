@@ -12,6 +12,15 @@
     "test": "nyc --reporter=html --reporter=text mocha -r ts-node/register test/**/*.ts --recursive --timeout 5000",
     "integration": "nyc --reporter=html --reporter=text mocha -r ts-node/register --recursive --timeout 5000 integration/**/*.ts"
   },
+  "nyc": {
+    "extension": [
+      ".ts",
+      ".tsx"
+    ],
+    "exclude": [
+      "**/*.d.ts"
+    ]
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",

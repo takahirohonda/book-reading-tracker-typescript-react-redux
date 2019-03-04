@@ -1,6 +1,6 @@
 import * as C from '../constants'
 
-import { book } from '../types/index';
+import { Book } from '../types';
 
 // This const/type pattern allows us to use TypeScript's string literal types in an easily accessible and refactorable way.
 
@@ -14,7 +14,7 @@ export interface UpdateField {
 
 export interface AddToList {
     type: C.ADD_TO_LIST
-    payload: book
+    payload: Book
 }
 
 export interface RemoveFromList {
@@ -30,7 +30,7 @@ export function updateField(field: string, value: string): UpdateField {
     }
 }
 
-export function AddToList(book: book): AddToList {
+export function AddToList(book: Book): AddToList {
     return {
         type: C.ADD_TO_LIST,
         payload: book

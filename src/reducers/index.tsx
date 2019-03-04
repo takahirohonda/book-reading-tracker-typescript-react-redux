@@ -1,9 +1,10 @@
 import { FormAction } from '../actions';
-import { StoreState, book, bookList } from '../types/index';
+import { StoreState, Book } from '../types/index';
 import { UPDATE_FIELD, ADD_TO_LIST, REMOVE_FROM_LIST } from '../constants/index';
 import { combineReducers } from 'redux'
+import { initialState } from './initialState'
 
-export const formFieldUpdate = (state: book, action: FormAction): book => {
+export const formFieldUpdate = (state: Book = initialState.book, action: FormAction): Book => {
   switch (action.type) {
 
 		case UPDATE_FIELD:
@@ -14,12 +15,12 @@ export const formFieldUpdate = (state: book, action: FormAction): book => {
 	return state
 }
 
-export const readingListUpdate = (state: bookList, action: FormAction): bookList => {
+export const readingListUpdate = (state: Book[] = initialState.bookList, action: FormAction): Book[] => {
   switch (action.type) {
 
 		case ADD_TO_LIST:
-			return state
-      // return { ...state, action.payload }
+		
+      return [ ...state, action.payload ]
     
     case REMOVE_FROM_LIST:
       return state
@@ -27,7 +28,6 @@ export const readingListUpdate = (state: bookList, action: FormAction): bookList
   }
   return state;
 }
-
 
 export default combineReducers({
 	formFieldUpdate,

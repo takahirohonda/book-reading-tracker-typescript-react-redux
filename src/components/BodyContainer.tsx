@@ -1,6 +1,10 @@
 import * as React from "react"
 
-const BodyContainer = (props: any) => {
+interface IBodyContainerProps {
+	children? : JSX.Element[] | JSX.Element;
+}
+
+const BodyContainer = (props: IBodyContainerProps) => {
 
 	return (
 		<React.Fragment>

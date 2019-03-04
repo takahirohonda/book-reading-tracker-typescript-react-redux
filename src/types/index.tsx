@@ -1,15 +1,9 @@
-
-
 export interface StoreState {
-    book: book
-    bookList : bookList
+    book: Book
+    bookList : Book[]
 }
 
-export interface bookList {
-	bookList: Array<book>
-}
-
-export interface book {
+export interface Book {
     bookTitle: string;
     author: string;
     totalPage: number;

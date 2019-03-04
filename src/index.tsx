@@ -3,7 +3,6 @@ import '../public/css/bootstrap.css'
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
 import App from './App';
-import { StoreState } from './types'
 import { createStore, compose } from 'redux';
 import { Provider }from 'react-redux';
 
@@ -11,24 +10,15 @@ import reducer from './reducers'
 
 let composeEnhancers
 
-// composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
+declare const __REDUX_DEVTOOLS_EXTENSION_COMPOSE__: any;
 
-// let store = createStore(reducer, composeEnhancers())
+composeEnhancers = __REDUX_DEVTOOLS_EXTENSION_COMPOSE__ 
 
-const store = createStore<StoreState>(reducer, {
-    book: {
-        bookTitle: '',
-        author: '',
-        totalPage: 0,
-        currentPage: 0,
-        readingStatus: ''
-    },
-    bookList: []
-  });
+const store = createStore(reducer, composeEnhancers())
 
 ReactDOM.render(
     <Provider store = {store}>
     <App />
     </Provider>, 
-    document.getElementById('react')
+    document.getElementById('root')
 )

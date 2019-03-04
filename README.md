@@ -229,19 +229,15 @@ npm i --save-dev nyc
 
 ### (4-2) Add script into package.json
 
-```
-"test": "mocha -r ts-node/register test/**/*.ts --recursive --timeout 5000",
-"integration": "mocha -r ts-node/register  --recursive --timeout 5000 integration/**/*.ts"
-```
-
-other examples (in progress)
+Istanbul reporter option html gives html coverage output in the coverage directory. text option displays the coverage table on the console when you run the test.
+'-r ts-node/register' enables mocha to use TypeScript in the node environment.
 
 ```
-"test": "nyc mocha --require test/setup.js --require @babel/register --recursive --timeout 5000 --require ignore-styles test/**/*.ts",
-"integration": "mocha --require test/setup.js --require @babel/register --recursive --timeout 5000 --require ignore-styles integration/**/*.js"
+"test": "nyc --reporter=html --reporter=text mocha -r ts-node/register test/**/*.ts --recursive --timeout 5000",
+"integration": "nyc --reporter=html --reporter=text mocha -r ts-node/register --recursive --timeout 5000 integration/**/*.ts"
 ```
 
-Optional nyc configuration example in package.json
+Optional nyc configuration example in package.json. In this way, coverage report covers all the test scripts, not directory specific.
 ```
  "nyc": {
     "extension": [

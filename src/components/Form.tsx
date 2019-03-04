@@ -1,8 +1,8 @@
 import * as React from 'react'
 import FormSectionHeader from './FormSectionHeader'
-import { Props } from './Containers/FormContainer'
+import { IMapDispatchToProps, IMapStateToProps } from './Containers/FormContainer'
 
-const Form = ({onUpdateField}: Props) => {
+const Form = ( {onUpdateField }: IMapDispatchToProps, { book }: IMapStateToProps) => {
 
   return (
 		<React.Fragment>
@@ -14,7 +14,7 @@ const Form = ({onUpdateField}: Props) => {
 							<FormSectionHeader headerTitle="Book Title"/>
 							<div className="form-group">
 								<label htmlFor="exampleInputEmail1">Book Title</label>
-								<input type="text" className="form-control input-field" id="bookTitle" placeholder="Enter book title..." 
+								<input type="text" className="form-control input-field" id="bookTitle" name="bookTitle" value={book.bookTitle} placeholder="Enter book title..." 
 									onChange={ e => onUpdateField(e.target.name, e.target.value)}
 								/>
 							</div>

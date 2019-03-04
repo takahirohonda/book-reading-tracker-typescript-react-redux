@@ -1,23 +1,30 @@
 import Form from '../Form'
 import * as actions from '../../actions'
-import { StoreState, book, bookList } from '../../types'
+import { StoreState, Book } from '../../types'
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux'
 
-export interface Props {
+export interface IMapDispatchToProps {
     onUpdateField?: (name: string, value: string) => void;
 }
 
-const mapStateToProps = ({book}: StoreState)  => {
+export interface IMapStateToProps {
+	book: Book;
+}
+
+export type IFormContainer = IMapDispatchToProps | IMapStateToProps
+// Assigning types IMapDispatchToProps and IMapStateToProps is optional 
+// but it is better for strongly typed code
+
+const mapStateToProps = ({ book }: StoreState) : IMapStateToProps  => {
 	return {
 		book: book
 	}
 }
 
-
-const mapDispatchToProps = (dispatch: Dispatch<actions.FormAction>) => {
+const mapDispatchToProps = (dispatch: Dispatch<actions.FormAction>) : IMapDispatchToProps => {
 	return {
-		updateFieldOnChange: (field: string, value: string) => {
+		onUpdateField: (field: string, value: string) => {
             dispatch(actions.updateField(field, value))
             console.log(value)
         }

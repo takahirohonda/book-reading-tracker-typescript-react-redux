@@ -1,7 +1,7 @@
 import * as React from 'react'
 import BodyContainer from './components/BodyContainer'
 import Style from './components/Style'
-import Form from './components/Form'
+import FormContainer from './components/containers/FormContainer'
 
 
 const App = () => {
@@ -9,7 +9,7 @@ const App = () => {
 		<React.Fragment>
 				<Style />
 				<BodyContainer>
-						<Form />
+						<FormContainer />
 				</BodyContainer>
 		</React.Fragment>
 	)

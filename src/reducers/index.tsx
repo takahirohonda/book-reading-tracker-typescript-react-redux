@@ -30,6 +30,6 @@ export const readingListUpdate = (state: Book[] = initialState.bookList, action:
 }
 
 export default combineReducers({
-	formFieldUpdate,
-	readingListUpdate
+	book: formFieldUpdate,
+	readingList: readingListUpdate
 })

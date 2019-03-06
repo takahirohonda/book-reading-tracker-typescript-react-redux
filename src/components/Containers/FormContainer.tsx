@@ -9,25 +9,23 @@ export interface IMapDispatchToProps {
 }
 
 export interface IMapStateToProps {
-	book: Book;
+	bookTitle: string;
 }
 
-export type IFormContainer = IMapDispatchToProps | IMapStateToProps
 // Assigning types IMapDispatchToProps and IMapStateToProps is optional 
 // but it is better for strongly typed code
 
-const mapStateToProps = ({ book }: StoreState) : IMapStateToProps  => {
+const mapStateToProps = ({ book }: StoreState): IMapStateToProps => {
 	return {
-		book: book
+		bookTitle: book.bookTitle
 	}
 }
 
-const mapDispatchToProps = (dispatch: Dispatch<actions.FormAction>) : IMapDispatchToProps => {
+const mapDispatchToProps = (dispatch: Dispatch<actions.FormAction>): IMapDispatchToProps => {
 	return {
 		onUpdateField: (field: string, value: string) => {
-            dispatch(actions.updateField(field, value))
-            console.log(value)
-        }
+      dispatch(actions.updateField(field, value))
+    }
 	}
 }
 

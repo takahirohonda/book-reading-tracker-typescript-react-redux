@@ -1,0 +1,43 @@
+[
+  {
+    "bookTitle": "On the road",
+    "author": "Jack Kerouac",
+    "totalPage": "309",
+    "currentPage": "187",
+    "readingStatus": "Reading",
+    "updatedTimestamp": "2019-01-10 14:23:50"
+  },
+  {
+    "bookTitle": "Tropic of cancer",
+    "author": "Henry Miller",
+    "totalPage": "200",
+    "currentPage": "0",
+    "readingStatus": "To read",
+    "updatedTimestamp": "2019-01-03 14:30:10"
+  },
+  {
+    "bookTitle": "Hard-boiled wonderland and the end of the world",
+    "author": "Haruki Murakami",
+    "totalPage": "400",
+    "currentPage": "400",
+    "readingStatus": "Completed",
+    "updatedTimestamp": "2019-01-02 14:23:45"
+  },
+  {
+    "bookTitle": "The Big Sleep",
+    "author": "Raymond Chandler",
+    "totalPage": "251",
+    "currentPage": "251",
+    "readingStatus": "Completed",
+    "updatedTimestamp": "2019-01-01 10:11:14"
+  },
+  {
+    "bookTitle": "Anna Karenina",
+    "author": "Tolstoy",
+    "totalPage": "784",
+    "currentPage": "784",
+    "readingStatus": "Completed",
+    "updatedTimestamp": "2019-01-01 09:45:23"
+  }
+
+]

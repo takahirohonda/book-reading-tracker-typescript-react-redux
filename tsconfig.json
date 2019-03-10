@@ -1,16 +1,18 @@
 {
-    "compilerOptions": {
-      "outDir": "./dist/",
-      "sourceMap": true,
-      "noImplicitAny": true,
-      "module": "commonjs",
-      "target": "es5",
-      "jsx": "react"
-    },
-    "include" : [
-        "./src/**/*"
-    ],
-    "exclude" : [
-        "./test/**/*"
-    ]
+  "compilerOptions": {
+    "outDir": "./dist/",
+    "sourceMap": true,
+    "noImplicitAny": true,
+    "module": "commonjs",
+    "target": "es5",
+    "jsx": "react",
+    "resolveJsonModule": true,
+    "skipLibCheck" : true
+  },
+  "include" : [
+      "./src/**/*"
+  ],
+  "exclude" : [
+      "./test/**/*"
+  ]
 }

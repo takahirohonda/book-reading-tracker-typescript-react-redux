@@ -1,12 +1,14 @@
 import { StoreState } from '../types'
+import * as initialData from './initialData.json'
 
 export const initialState: StoreState = {
   book: {
     bookTitle: '',
     author: '',
-    totalPage: null,
-    currentPage: null,
-    readingStatus: ''
+    totalPage: '',
+    currentPage: '',
+    readingStatus: '',
+    updatedTimestamp: ''
   },
-  bookList: []
+  bookList: initialData
 }

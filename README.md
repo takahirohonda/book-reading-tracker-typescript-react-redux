@@ -1,13 +1,15 @@
-## typescript-react-webpack-setup
+## Book Reading Tracker with TypeScript React & Redux
 
-Example set up for Typescript React Development environment including:
+This is an example of React & Redux with TypeScript. It has a form to enter book details and reading progress. The information get saved to the store and displayed on the result page.
+
+Setup for this includes:
 
 - TypeScript
-- React
+- React & Redux
 - Mocha and Istanbul
-- JSDOM
+- Webpack
 
-## Journey to TypeScript React Webpack Setup
+## Journey to TypeScript React & Redux Webpack Setup
 
 ### (1) Bare minimum to get started
 
@@ -40,6 +42,9 @@ npm i --save-dev source-map-loader
 
 # install redux
 npm install -S redux react-redux @types/react-redux
+
+# install react router
+npm i -S react-router-dom @types/react-router-dom
 
 ```
 Note: using ts-loader. Can use awesome-typescript-loader instead.
@@ -91,6 +96,9 @@ module.exports = {
 
 #### (1-4) Add tsconfig
 
+To import Json data directly, we need to set resolveJsonModule = true, then import as `import * as initalData from './initalData'`
+skipLibCheck = true will make compilation time much faster for hot loading.
+
 ```
 {
     "compilerOptions": {
@@ -99,7 +107,9 @@ module.exports = {
       "noImplicitAny": true,
       "module": "commonjs",
       "target": "es5",
-      "jsx": "react"
+      "jsx": "react",
+      "resolveJsonModule": true,
+      "skipLibCheck" : true
     },
     "include" : [
         "./src/**/*"
@@ -264,7 +274,7 @@ Optional nyc configuration example in package.json. In this way, coverage report
 npm i enzyme jsdom enzyme-adapter-react-16
 npm i @types/enzyme @types/jsdom @types/enzyme-adapter-react-16 --save-dev
 ```
-
+*JSDOM is not used for this project.
 
 ### (6) Setting up Redux
 

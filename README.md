@@ -216,8 +216,8 @@ import 'react';
 
 declare module 'react' {
   interface StyleHTMLAttributes<T> extends React.HTMLAttributes<T> {
-    jsx?: boolean;
-    global?: boolean;
+    jsx?: string;
+    global?: string;
   }
 }
 ```
@@ -326,4 +326,29 @@ export interface StoreState {
     languageName: string;
     enthusiasmLevel: number;
 }
+```
+
+### (7) Support for Google Chrome Redux DevTools 
+
+For regular Javascript, you can simply do below. 
+
+```javascript
+import { createStore, compose } from 'redux'
+
+let composeEnhancers
+composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
+let store = createStore(reducers, composeEnhancers())
+```
+
+With TypeScript, you need to give __REDUX_DEVTOOLS_EXTENSION_COMPOSE__ property to the window and pass it to the store. Otherwise, you will get the error Property '__REDUX_DEVTOOLS_EXTENSION_COMPOSE__' does not exist on type 'Window'.
+
+```javascript
+declare global {
+  interface Window {
+    __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose;
+  }
+}
+ 
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const store = createStore(reducer, composeEnhancers())
 ```

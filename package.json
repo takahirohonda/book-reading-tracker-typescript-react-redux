@@ -9,18 +9,10 @@
     "build": "webpack --mode production",
     "eslint": "eslint src/*",
     "fixlint": "eslint src/* --fix",
-    "test": "nyc --reporter=html --reporter=text mocha -r ts-node/register test/**/*.ts --recursive --timeout 5000",
+    "test": "nyc --reporter=html --reporter=text mocha -r ts-node/register -r jsdom-global/register -r unitTestSetup.ts **/test/**/*.ts test/**/*.ts test/**/*.tsx --recursive --timeout 5000",
     "integration": "nyc --reporter=html --reporter=text mocha -r ts-node/register --recursive --timeout 5000 integration/**/*.ts"
   },
-  "nyc": {
-    "extension": [
-      ".ts",
-      ".tsx"
-    ],
-    "exclude": [
-      "**/*.d.ts"
-    ]
-  },
+  
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -31,6 +23,8 @@
     "@types/jsdom": "^12.2.3",
     "@types/mocha": "^5.2.6",
     "@types/nock": "^9.3.1",
+    "@types/node": "^11.11.0",
+    "@types/react-test-renderer": "^16.8.1",
     "@types/sinon": "^7.0.8",
     "@typescript-eslint/eslint-plugin": "^1.4.2",
     "chai": "^4.2.0",
@@ -39,11 +33,17 @@
     "eslint-plugin-react": "^7.12.4",
     "extract-text-webpack-plugin": "^3.0.2",
     "html-webpack-plugin": "^3.2.0",
+    "jsdom-global": "^3.0.2",
     "mini-css-extract-plugin": "^0.5.0",
     "mocha": "^6.0.2",
+    "enzyme": "^3.9.0",
+    "enzyme-adapter-react-16": "^1.10.0",
+    "eslint-config-typescript": "^2.0.0",
+    "jsdom": "^13.2.0",
     "mocha-typescript": "^1.1.17",
     "nock": "^10.0.6",
     "nyc": "^13.3.0",
+    "react-test-renderer": "^16.8.4",
     "sinon": "^7.2.6",
     "source-map-loader": "^0.2.4",
     "style-loader": "^0.23.1",
@@ -56,6 +56,7 @@
     "webpack-dev-server": "^3.2.1"
   },
   "dependencies": {
+    "@types/history": "^4.7.2",
     "@types/react": "^16.8.6",
     "@types/react-dom": "^16.8.2",
     "@types/react-redux": "^7.0.1",
@@ -63,10 +64,6 @@
     "@types/redux": "^3.6.0",
     "axios": "^0.18.0",
     "bootstrap": "^4.3.1",
-    "enzyme": "^3.9.0",
-    "enzyme-adapter-react-16": "^1.10.0",
-    "eslint-config-typescript": "^2.0.0",
-    "jsdom": "^13.2.0",
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
     "react-redux": "^6.0.1",

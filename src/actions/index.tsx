@@ -25,6 +25,7 @@ export interface RemoveFromList {
     type: C.REMOVE_FROM_LIST
     payload: number
 }
+
 export type FormAction = UpdateField | AddToList | RemoveFromList | ClearFields
 
 export function updateField(field: string, value: string): UpdateField {

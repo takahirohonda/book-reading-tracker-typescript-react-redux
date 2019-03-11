@@ -88,8 +88,7 @@ module.exports = {
         new HtmlWebPackPlugin({
             template: "./public/index.html",
             filename: "index.html"
-        }),
-        new UglifyJsPlugin()
+        })
     ]
   };
 ```
@@ -242,10 +241,15 @@ npm i --save-dev nyc
 Istanbul reporter option html gives html coverage output in the coverage directory. text option displays the coverage table on the console when you run the test.
 '-r ts-node/register' enables mocha to use TypeScript in the node environment.
 
+Including both ts and tsx extension. tsx is for enzyme test.
+
 ```
-"test": "nyc --reporter=html --reporter=text mocha -r ts-node/register test/**/*.ts --recursive --timeout 5000",
+"test": "nyc --reporter=html --reporter=text mocha -r ts-node/register -r jsdom-global/register -r unitTestSetup.ts test/**/*.ts test/**/*.tsx --recursive --timeout 5000",
 "integration": "nyc --reporter=html --reporter=text mocha -r ts-node/register --recursive --timeout 5000 integration/**/*.ts"
 ```
+
+Trouble shooting:
+ 'window is not defined' error can be overcome by installing jsdom-global and adding -r jsdom-global/register in mocha command
 
 Optional nyc configuration example in package.json. In this way, coverage report covers all the test scripts, not directory specific.
 ```
@@ -271,11 +275,40 @@ Optional nyc configuration example in package.json. In this way, coverage report
 #### (5-1) Installing dependencies
 
 ```bash
-npm i enzyme jsdom enzyme-adapter-react-16
+npm i enzyme jsdom jsdom-global enzyme-adapter-react-16
 npm i @types/enzyme @types/jsdom @types/enzyme-adapter-react-16 --save-dev
+npm i --save-dev react-test-renderer @types/react-test-renderer
 ```
-*JSDOM is not used for this project.
+Error handling
 
+'It looks like you called `mount()` without a global document being loaded' error:
+- Mocha doesn't run the test in a browser environment & enzyme's mount API requires a DOM. JSDOM is required to simulate a browser environment in a Node environment.
+
+'window is not defined' error:
+- It can be overcome by installing jsdom-global and adding -r jsdom-global/register in mocha command
+
+Property 'window' does not exist on type 'Global' error:
+- When we create setup file for JSDOM (unitTestSetup.ts on the root folder), we need to add browser properties to Node global environment as it does not have browser properties.
+We can extend NodeJS.Global properties by adding interface and redefining the global variable with global Node variable. 
+
+```javascript
+interface Global extends NodeJS.Global {
+  window: Window,
+  document: Document,
+  navigator: {
+    userAgent: string
+  }
+}
+
+const globalNode: Global = {
+  window: window,
+  document: window.document,
+  navigator: {
+    userAgent: 'node.js',
+  },
+  ...global
+}
+```
 ### (6) Setting up Redux
 
 ### (6-1) Installing dependencies

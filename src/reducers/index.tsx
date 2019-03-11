@@ -1,6 +1,6 @@
 import { FormAction } from '../actions';
 import { StoreState, Book } from '../types/index';
-import { UPDATE_FIELD, CLEAR_FIELDS, ADD_TO_LIST, REMOVE_FROM_LIST } from '../constants/index';
+import { UPDATE_FIELD, CLEAR_FIELDS, ADD_TO_LIST, REMOVE_FROM_LIST } from '../constants';
 import { combineReducers } from 'redux'
 import { initialState } from './initialState'
 import getTimestamp from '../utils/getTimestamp'

@@ -9,3 +9,7 @@ export type ADD_TO_LIST = typeof ADD_TO_LIST;
 
 export const REMOVE_FROM_LIST = 'REMOVE_FROM_LIST';
 export type REMOVE_FROM_LIST= typeof REMOVE_FROM_LIST;
+
+// for unit testing to check the inital state return
+export const DEFAULT = 'DEFAULT';
+export type DEFAULT= typeof DEFAULT;

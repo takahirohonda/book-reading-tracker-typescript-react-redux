@@ -35,15 +35,7 @@ if (!globalNode.window && !globalNode.document) {
   globalNode.document = window.document;
   globalNode.navigator = window.navigator;
 }
-// if (!globalNode.window && !globalNode.document) {
-// const jsdom = new JSDOM('<!doctype html><html><body></body></html>');
-// const { window } = jsdom;
-// globalNode.window = window;
-// globalNode.document = window.document;
-// globalNode.navigator = {
-//   userAgent: 'node.js',
-// };
-// }
+
 // Critical: This Enzyme adapter imports React, but the JSDOM above // must be created BEFORE React is imported.
 import * as enzyme from 'enzyme';
 import * as Adapter from 'enzyme-adapter-react-16';

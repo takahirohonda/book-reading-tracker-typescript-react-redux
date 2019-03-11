@@ -10,12 +10,13 @@ import { HashRouter as Router, Route } from 'react-router-dom'
 
 import reducer from './reducers'
 
-let composeEnhancers
+declare global {
+  interface Window {
+    __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose;
+  }
+}
 
-declare const __REDUX_DEVTOOLS_EXTENSION_COMPOSE__: any;
-
-composeEnhancers = __REDUX_DEVTOOLS_EXTENSION_COMPOSE__ 
-
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(reducer, composeEnhancers())
 
 ReactDOM.render(

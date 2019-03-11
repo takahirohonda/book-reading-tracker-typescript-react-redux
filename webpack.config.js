@@ -1,5 +1,5 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin");
-// const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 // const UglifyJsPlugin = require("uglifyjs-webpack-plugin")
 
 module.exports = {
@@ -31,7 +31,7 @@ module.exports = {
           template: "./public/index.html",
           filename: "index.html"
       }),
-      // new MiniCssExtractPlugin({filename: "app.css"}),
+      new MiniCssExtractPlugin({filename: "app.css"}),
       // new UglifyJsPlugin()
   ]
   };
